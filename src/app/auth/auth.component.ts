@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+  isLogin: boolean=false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+  Login()
+  {
+    this.isLogin=true;
+  }
+  Signup()
+  {
+    this.isLogin=false;
   }
 
 }
