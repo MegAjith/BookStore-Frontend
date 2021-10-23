@@ -8,23 +8,23 @@
 
 -->
 <div class="container row align-items-center">
-
-    <button type="submit" class="btn btn-primary" (click)="isLogin = true">Login</button>
-    <hr>
-    <button type="submit" class="btn btn-primary" (click)="isLogin = false">Register</button>
-    <br>
-    <br>
+    <div class="container-fluid">
+        <button type="submit" class="btn btn-primary col-6" (click)="isLogin = true">Login</button>
+        <button type="submit" class="btn btn-primary col-6" (click)="isLogin = false">Register</button>
+    </div>
     <div *ngIf="isLogin; else elseblock">
         <h2 style="color:royalblue; text-align: center;">Log In</h2>
         <form (ngSubmit)="onLogin()">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" name="username" [(ngModel)]="userCred.username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" name="username" [(ngModel)]="userCred.username" class="form-control"
+                    id="exampleInputEmail1" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" name="password" [(ngModel)]="userCred.password" class="form-control" id="exampleInputPassword1">
+                <input type="password" name="password" [(ngModel)]="userCred.password" class="form-control"
+                    id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -34,19 +34,19 @@
 
     <ng-template #elseblock>
         <h2 style="color:royalblue; text-align: center;">Sign Up</h2>
-        <form>
+        <form (ngSubmit)="onRegister()">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" [(ngModel)]="userCred.username" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" class="form-control" [(ngModel)]="userCred.password" name="password" id="exampleInputPassword1">
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <input type="password" class="form-control" [(ngModel)]="userCred.confirmPassword" name="confirmPassword" id="exampleInputPassword1">
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

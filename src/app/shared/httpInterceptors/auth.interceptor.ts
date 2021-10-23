@@ -8,6 +8,11 @@ import {
 import { from, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
+const nonAuthList = [
+  {url:"/Token",method:'POST'},
+  {url:"/api/Account/Register",method:'POST'}
+]
+
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
@@ -19,7 +24,9 @@ export class AuthInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
     let authReq = req;
-    if (!req.url.endsWith('/Token')) {
+    if (!nonAuthList.some(value => {
+       return req.url.endsWith(value.url) && req.method.toUpperCase() === value.method
+    }) ) {
       authReq = req.clone({
         headers: req.headers.set('Authorization',`Bearer ${authToken}`)
       });

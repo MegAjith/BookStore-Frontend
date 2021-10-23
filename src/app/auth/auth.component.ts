@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, UserCredentials } from '../shared/services/auth.service';
+import { RegisterModel, UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-auth',
@@ -9,13 +10,14 @@ import { AuthService, UserCredentials } from '../shared/services/auth.service';
 export class AuthComponent implements OnInit {
   isLogin: boolean = true;
   isLogged: boolean = false;
+  isRegistered: boolean = false;
   userCred = {
     username: "",
     password: "",
     confirmPassword: "",
   }
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService,private users: UserService) { }
 
   ngOnInit(): void {
   }
@@ -26,8 +28,20 @@ export class AuthComponent implements OnInit {
       )?.subscribe(
         isLogged=>{
           // add navigation to /admin and /user here
+          // handle wrong credentials
           this.isLogged = isLogged;
         }
         )
+  }
+  async onRegister(){
+    this.isRegistered = await this.users.register({
+      Email: this.userCred.username,
+      Password: this.userCred.password,
+      ConfirmPassword: this.userCred.confirmPassword
+    }).toPromise();
+    if(this.isRegistered){
+      this.onLogin();
+    }
+      
   }
 }

@@ -2,10 +2,11 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { Injectable } from '@angular/core';
 import { of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-class User {
-  public userName?: string = undefined
-  public access_token?: string = undefined
-  public role?: string = undefined
+
+interface User {
+  userName?: string
+  access_token?: string
+  role?: string
 }
 
 export class UserCredentials {
