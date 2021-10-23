@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService, UserCredentials } from '../shared/services/auth.service';
 import { RegisterModel, UserService } from '../shared/services/user.service';
 
@@ -17,7 +18,7 @@ export class AuthComponent implements OnInit {
     confirmPassword: "",
   }
 
-  constructor(private auth: AuthService,private users: UserService) { }
+  constructor(private auth: AuthService,private users: UserService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +31,12 @@ export class AuthComponent implements OnInit {
           // add navigation to /admin and /user here
           // handle wrong credentials
           this.isLogged = isLogged;
+          if(!isLogged)
+            return;
+          if(this.auth.isAdmin())
+            this.router.navigateByUrl("/admin");
+          else
+            this.router.navigateByUrl("/user");
         }
         )
   }

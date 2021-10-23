@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './shared/httpInterceptors';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
