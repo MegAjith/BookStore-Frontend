@@ -10,9 +10,9 @@
 -->
 <!--Main Navigation-->
 <header *ngIf="auth.user">
-  <ul class="nav">
+  <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase()]" routerLinkActive="active">Category</a>
+      <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase()]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Category</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase(),'Books']" routerLinkActive="active">Books</a>
