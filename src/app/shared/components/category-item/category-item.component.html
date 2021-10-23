@@ -1,7 +1,9 @@
-<div class="card col mb-4">
-    <img class="card-img-top" [src]="category.Image || '/assets/img/default-image.svg'" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{category.CategoryName}}</h5>
-      <p class="card-text">{{category.Description}}</p>
-    </div>
+<a [routerLink]="['Books']" [queryParams]="{'CategoryId': category.CategoryId}" class="col">
+<div class="card mb-4">
+  <img class="card-img-top" [src]="category.Image || '/assets/img/default-image.svg'" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{category.CategoryName}}</h5>
+    <p class="card-text">{{category.Description}}</p>
   </div>
+</div>
+</a>

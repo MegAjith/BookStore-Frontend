@@ -35,7 +35,17 @@ export class UserCredentials {
 })
 export class AuthService {
   user?: User
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loadAuth();
+   }
+
+   saveAuth(){
+     localStorage.setItem("auth",JSON.stringify(this.user))
+   }
+
+   loadAuth(){
+     this.user = JSON.parse(localStorage.getItem("auth")||"{}");
+   }
 
   getAuthorizationToken() {
     if (this.user?.access_token) {
@@ -60,6 +70,7 @@ export class AuthService {
       }).pipe(
         map((authUser) => {
           this.user = authUser;
+          this.saveAuth();
           return true
         }),
         catchError((error: HttpErrorResponse) => {
