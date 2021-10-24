@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../../services/book.service';
 
 @Component({
@@ -10,7 +10,8 @@ export class BookListComponent implements OnInit {
 
   @Input()
   bookList: Book[] = []
-
+  @Output()
+  detailsRequest = new EventEmitter<Book>();
   constructor() { }
 
   ngOnInit(): void {

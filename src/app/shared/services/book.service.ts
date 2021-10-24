@@ -6,7 +6,10 @@ import {Category} from './category.service';
 
 export interface BookFilters {
   CategoryId?: number,
-  [key: string]: string | number | undefined;
+  status?: boolean,
+  featured?: boolean,
+  search?: string,
+  [key: string]: string | number | boolean | undefined;
 }
 
 export interface Book {

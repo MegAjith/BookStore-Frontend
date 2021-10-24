@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../../services/book.service';
 
 @Component({
@@ -19,6 +19,9 @@ export class BookItemComponent implements OnInit {
     createdAt: '',
     CategoryId: 0
   };
+
+  @Output()
+  detailsRequest = new EventEmitter<Book>();
 
   constructor() { }
 

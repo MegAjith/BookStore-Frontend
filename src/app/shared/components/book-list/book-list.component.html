@@ -1,7 +1,11 @@
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 row-cols-xl-8">
+<div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 row-cols-xl-8">
     <app-book-item
-     *ngFor="let book of bookList" 
+     *ngFor="let book of bookList"
+     (detailsRequest)="detailsRequest.emit($event)"
      [book]="book"
     >
     </app-book-item>
+    <div *ngIf="bookList.length <= 0" class="m-auto">
+        No Books found!
+    </div>
 </div>
