@@ -10,18 +10,37 @@
 -->
 <!--Main Navigation-->
 <header *ngIf="auth.user">
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase()]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Category</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase(),'Books']" routerLinkActive="active">Books</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" [routerLink]="[auth.user.role?.toLowerCase(),'WishList']" routerLinkActive="active">Wishlist</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" [routerLink]="[auth.user.role?.toLowerCase(),'Orders']" routerLinkActive="active" tabindex="-1" aria-disabled="true">Orders</a>
-    </li>
-  </ul>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="[auth.user.role?.toLowerCase()]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">BookStore</a>
+      <button type="button" class="navbar-toggler btn btn-outline-primary font-weight-bolder" style="font-size: x-large;" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed">
+        <svg *ngIf="isCollapsed" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+        <svg *ngIf="!isCollapsed" xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 0 24 24" width="32"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+      <div class="navbar-collapse" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <ul class="navbar-nav nav-pills me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase(),'Category']" routerLinkActive="active">Category</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase(),'Books']" routerLinkActive="active">Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" [routerLink]="[auth.user.role?.toLowerCase(),'WishList']" routerLinkActive="active">Wishlist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" [routerLink]="[auth.user.role?.toLowerCase(),'Orders']" routerLinkActive="active" tabindex="-1" aria-disabled="true">Orders</a>
+          </li>
+        </ul>
+        <form class="btn-group col col-lg-3" (ngSubmit)="onSearch()">
+          <input type="text" class="form-control" [(ngModel)]="searchText" name="search" placeholder="search Book title, author, ISBN, genre"/>
+          <button type="submit" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg></button>
+        </form>
+      </div>
+    </div>
+  </nav>
 </header>

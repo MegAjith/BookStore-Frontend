@@ -1,7 +1,6 @@
-<div class="card mb-4">
-    <img class="card-img-top" [src]="book.Image || '/assets/img/default-image.svg'" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{book.Title}}</h5>
-      <p class="card-text">{{book.Description}}</p>
-    </div>
+<div class="card mb-4" style="height: 18rem;" (click)="detailsRequest.emit(book)">
+  <img class="card-img-top" [src]="book.Image || '/assets/img/default-image.svg'" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{book.Title}}</h5>
   </div>
+</div>
