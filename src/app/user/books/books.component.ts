@@ -11,6 +11,8 @@ export class BooksComponent implements OnInit {
 
   bookList: Book[] = []
 
+  bookModalData?: Book
+
   constructor(private books: BookService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {

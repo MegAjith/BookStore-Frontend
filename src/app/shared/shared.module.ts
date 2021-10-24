@@ -5,6 +5,7 @@ import { CategoryItemComponent } from './components/category-item/category-item.
 import { BookListComponent } from './components/book-list/book-list.component';
 import { BookItemComponent } from './components/book-item/book-item.component';
 import { RouterModule } from '@angular/router';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     CategoryListComponent,
     CategoryItemComponent,
     BookListComponent,
-    BookItemComponent
+    BookItemComponent,
+    BookDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { RouterModule } from '@angular/router';
     CategoryListComponent,
     CategoryItemComponent,
     BookListComponent,
-    BookItemComponent
+    BookItemComponent,
+    BookDetailsComponent
   ],
 })
 export class SharedModule { }
