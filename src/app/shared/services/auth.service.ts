@@ -34,17 +34,22 @@ export class UserCredentials {
   providedIn: 'root'
 })
 export class AuthService {
-  user?: User
+  user?: User = undefined;
   constructor(private http: HttpClient) {
     this.loadAuth();
    }
 
    saveAuth(){
-     localStorage.setItem("auth",JSON.stringify(this.user))
+      if(this.user)
+        localStorage.setItem("auth",JSON.stringify(this.user));
+      else{
+        localStorage.removeItem("auth");
+      }
+        
    }
 
    loadAuth(){
-     this.user = JSON.parse(localStorage.getItem("auth")||"{}");
+     this.user = JSON.parse(localStorage.getItem("auth")||"null");
    }
 
   getAuthorizationToken() {
@@ -75,6 +80,7 @@ export class AuthService {
         }),
         catchError((error: HttpErrorResponse) => {
           this.user = undefined;
+          this.saveAuth();
           return of(false);
         }),
       )

@@ -4,4 +4,7 @@
      [book]="book"
     >
     </app-book-item>
+    <div *ngIf="bookList.length <= 0" class="m-auto">
+        No Books found!
+    </div>
 </div>
