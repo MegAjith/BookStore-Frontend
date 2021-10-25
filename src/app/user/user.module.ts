@@ -7,6 +7,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { SharedModule } from '../shared/shared.module';
 import { BooksComponent } from './books/books.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     UserComponent,
     CategoriesComponent,
     BooksComponent,
-    WishlistComponent
+    WishlistComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,

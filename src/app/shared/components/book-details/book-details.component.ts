@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../../services/book.service';
+import { OrdersService } from '../../services/orders.service';
 import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class BookDetailsComponent implements OnInit {
     return this.wishList.indexOf(this.book) != -1;
   }
 
-  constructor(public wishList: WishlistService) { }
+  constructor(public wishList: WishlistService,public orderService: OrdersService) { }
 
   ngOnInit(): void {
   }
