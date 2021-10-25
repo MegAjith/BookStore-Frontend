@@ -16,7 +16,8 @@ export interface BookFilters {
 export interface Book {
   Category?: Category,
   BookId: number,
-  Title: string
+  Title: string,
+  Author:string,
   ISBN?: string,
   Year?: number,
   Price?: number,
