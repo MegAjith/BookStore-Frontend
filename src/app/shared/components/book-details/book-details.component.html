@@ -10,10 +10,12 @@
                 <p class="card-text">{{book.Description}}</p>
             </div>
             <div class="btn-group col-12 col-md-0">
-                <button class="btn btn-primary" (click)="wishList.toggleBook(book)">
+                <button *ngIf="options.wishList" class="btn btn-primary" (click)="wishList.toggleBook(book)">
                     <span>{{(isInWishList)?"Remove from ":"Add to "}}</span>WishList
                 </button>
-                <button class="btn btn-success" (click)="orderService.AddBook({Book:book,quantity:1})">Buy Now</button>
+                <button *ngIf="options.order" class="btn btn-success" (click)="orderService.AddBook({Book:book,quantity:1})">
+                    Buy Now
+                </button>
             </div>
         </div>
     </div>

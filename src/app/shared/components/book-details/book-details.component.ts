@@ -13,6 +13,15 @@ export class BookDetailsComponent implements OnInit {
   @Input()
   book!: Book;
 
+  @Input()
+  options: {
+    wishList: boolean,
+    order: boolean,
+  } = {
+    wishList: true,
+    order: true,
+  };
+
   get isInWishList(){
     return this.wishList.indexOf(this.book) != -1;
   }
