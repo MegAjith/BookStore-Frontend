@@ -3,8 +3,11 @@
         <div *ngFor="let bookEntry of orderService.order?.BookEntries" class="row">
             <app-book-details [options] = "{order: false,wishList: true}" [book]="bookEntry.Book"></app-book-details>
         </div>
-        <div *ngIf="!orderService.order || !orderService.order.BookEntries || orderService.order.BookEntries.length <= 0" class="row">
-            Nothing in cart yet!
-        </div>
+
+    </div>
+    <div *ngIf="!orderService.order || !orderService.order.BookEntries || orderService.order.BookEntries.length <= 0" 
+        class="d-flex align-items-center" style="width: 100vw;height: 50vh;"
+        >
+        <span class="m-auto">Nothing in cart yet!</span>
     </div>
 </main>

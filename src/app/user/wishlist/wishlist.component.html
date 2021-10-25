@@ -3,8 +3,8 @@
         <div *ngFor="let book of wishList.wishList" class="row">
             <app-book-details [book]="book"></app-book-details>
         </div>
-        <div *ngIf="wishList.wishList.length <= 0" class="row">
-            You dont wish for anything yet!
-        </div>
+    </div>
+    <div class="d-flex align-items-center" style="width: 100vw;height: 50vh;" *ngIf="wishList.wishList.length <= 0">
+        <span class="m-auto">You dont wish for anything yet!</span>
     </div>
 </main>

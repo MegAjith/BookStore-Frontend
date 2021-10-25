@@ -18,7 +18,6 @@ export class SideNavComponent implements OnInit {
   }
 
   onSearch(){
-    this.searchText = "";
     this.router.navigateByUrl(`/user/Books?search=${this.searchText}`);
   }
 
