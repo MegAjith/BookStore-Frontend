@@ -1,0 +1,8 @@
+@import 'src/colors.scss';
+.card {
+    height: 18rem;
+}
+
+.card:hover {
+    box-shadow: 0 .5rem 1rem rgba($black, .15)!important;
+}
