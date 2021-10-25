@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { catchError, filter } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 import {Category} from './category.service';
 
 export interface BookFilters {
@@ -33,9 +34,10 @@ export interface Book {
 })
 export class BookService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private auth: AuthService) { }
 
   getList(filters: BookFilters) {
+    filters = this.addFilters(filters);
     let queryParams = new HttpParams();
     for (let key in filters) {
       queryParams = queryParams.set(key, filters[key]||"");
@@ -45,5 +47,14 @@ export class BookService {
     }).pipe(
       catchError(err => of([]))
     )
+  }
+  addFilters(filters: BookFilters){
+    if(!this.auth.isAdmin()){
+      return {
+        ...filters,
+        status: true,
+      };
+    }
+    return filters;
   }
 }

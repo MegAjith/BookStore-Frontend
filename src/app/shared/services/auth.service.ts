@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { Injectable } from '@angular/core';
 import { of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { ToastService } from './toast.service';
 
 interface User {
   userName?: string
@@ -35,7 +36,7 @@ export class UserCredentials {
 })
 export class AuthService {
   user?: User = undefined;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private toastService: ToastService) {
     this.loadAuth();
    }
 
@@ -75,6 +76,7 @@ export class AuthService {
       }).pipe(
         map((authUser) => {
           this.user = authUser;
+          this.makeToast();
           this.saveAuth();
           return true
         }),
@@ -84,5 +86,12 @@ export class AuthService {
           return of(false);
         }),
       )
+  }
+
+  makeToast(){
+    this.toastService.show({
+      header: "Login Successful!",
+      body: `Logged in as ${this.user?.role} ${this.user?.userName}`
+    });
   }
 }

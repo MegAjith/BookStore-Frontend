@@ -3,6 +3,41 @@
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
-* {
+@import './colors.scss';
+
+:root {
     font-family: sans-serif;
+}
+
+.bg-blue{
+    background-color: $blue;
+}
+
+.bg-green {
+    background-color: $green;
+}
+
+.btn-blue {
+    background-color: $blue;
+    color: $white;
+}
+
+.btn-green {
+    background-color: $green;
+    color: $white;
+}
+
+.btn-outline-blue:hover {
+    color: $white;
+    background-color: $blue;
+    border-color: $blue;
+}
+
+.btn-outline-blue {
+    color: $blue;
+    border-color: $blue;
+}
+
+a {
+    color: inherit!important;
 }

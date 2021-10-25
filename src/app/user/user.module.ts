@@ -6,13 +6,17 @@ import { UserComponent } from './user.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { SharedModule } from '../shared/shared.module';
 import { BooksComponent } from './books/books.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
   declarations: [
     UserComponent,
     CategoriesComponent,
-    BooksComponent
+    BooksComponent,
+    WishlistComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,

@@ -8,21 +8,24 @@ import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { httpInterceptorProviders } from './shared/httpInterceptors';
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbToastModule,NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavComponent,
-    AuthComponent
+    AuthComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule,
+    NgbToastModule,
+    NgbCollapseModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

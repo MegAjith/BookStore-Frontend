@@ -10,6 +10,7 @@ export class BookItemComponent implements OnInit {
 
   @Input()
   book: Book = {
+    Author: '',
     Category: undefined,
     BookId: 0,
     Title: '',
