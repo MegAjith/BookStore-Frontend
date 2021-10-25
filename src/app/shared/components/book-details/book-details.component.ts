@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../../services/book.service';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
   selector: 'app-book-details',
@@ -11,10 +12,11 @@ export class BookDetailsComponent implements OnInit {
   @Input()
   book!: Book;
 
-  @Output()
-  close = new EventEmitter<void>()
+  get isInWishList(){
+    return this.wishList.indexOf(this.book) != -1;
+  }
 
-  constructor() { }
+  constructor(public wishList: WishlistService) { }
 
   ngOnInit(): void {
   }

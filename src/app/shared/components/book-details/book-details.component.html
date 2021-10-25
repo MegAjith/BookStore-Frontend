@@ -1,18 +1,19 @@
-<div class="fullscreen bg-gray d-flex" tabindex="-1" (click)="close.emit()">
-    <div class="dialog m-auto card" style="max-width: 540px;" (click)="$event.stopPropagation()">
-        <div class="row g-0">
-            <div class="col-md-4 d-flex">
-                <img [src]="book.Image || '/assets/img/default-image.svg'" alt="Card image cap" class="img-fluid rounded-start m-auto" alt="...">
+<div class="card" (click)="$event.stopPropagation()">
+    <div class="row g-0">
+        <div class="col-md-4 d-flex">
+            <img [src]="book.Image || '/assets/img/default-image.svg'" alt="Card image cap"
+                class="img-fluid rounded-start m-auto" alt="...">
+        </div>
+        <div class="col-md-8 container">
+            <div class="card-body">
+                <h5 class="card-title">{{book.Title}}</h5>
+                <p class="card-text">{{book.Description}}</p>
             </div>
-            <div class="col-md-8 container">
-                <div class="card-body">
-                    <h5 class="card-title">{{book.Title}}</h5>
-                    <p class="card-text">{{book.Description}}</p>
-                </div>
-                <div class="btn-group col-12 col-md-0">
-                    <button class="btn btn-primary">WishList</button>
-                    <button class="btn btn-success">Buy Now</button>
-                </div>
+            <div class="btn-group col-12 col-md-0">
+                <button class="btn btn-primary" (click)="wishList.toggleBook(book)">
+                    <span>{{(isInWishList)?"Remove from ":"Add to "}}</span>WishList
+                </button>
+                <button class="btn btn-success">Buy Now</button>
             </div>
         </div>
     </div>

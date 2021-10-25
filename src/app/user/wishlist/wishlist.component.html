@@ -1,0 +1,10 @@
+<main>
+    <div class="container">
+        <div *ngFor="let book of wishList.wishList" class="row">
+            <app-book-details [book]="book"></app-book-details>
+        </div>
+        <div *ngIf="wishList.wishList.length <= 0" class="row">
+            You dont wish for anything yet!
+        </div>
+    </div>
+</main>
