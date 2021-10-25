@@ -10,12 +10,14 @@ import { httpInterceptorProviders } from './shared/httpInterceptors';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavComponent,
-    AuthComponent
+    AuthComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Book } from './book.service';
+import { ToastService } from './toast.service';
 
 interface BookGetResponse{
   Books: Book[],
@@ -15,7 +16,7 @@ export class WishlistService {
 
   wishList: Book[] = []
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private toastService: ToastService) {
     this.getWishList();
   }
 
@@ -35,6 +36,10 @@ export class WishlistService {
       {
         complete: () => {
           this.wishList.push(book);
+          this.toastService.show({
+            header: `Add to Wishlist`,
+            body: `${book.Title} was added to wishlist`,
+          });
         }
       }
     )
@@ -47,6 +52,10 @@ export class WishlistService {
           let index = this.indexOf(book);
           if (index != -1)
             this.wishList.splice(index, 1);
+          this.toastService.show({
+              header: `Remove from Wishlist`,
+              body: `${book.Title} was removed from wishlist`,
+            });
         }
       }
     )
