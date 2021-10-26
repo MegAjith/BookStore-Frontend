@@ -1,11 +1,8 @@
 <main class="row row-cols-1 row-cols-md-2">
-    <div class="container-fluid col" style="height: 50vh;overflow-y: auto;">
+    <div class="container-fluid col" style="height: 70vh;overflow-y: auto;">
         <div *ngFor="let bookEntry of orderService.order?.BookEntries" class="row mb-2">
-            <app-book-entry-details
-             [bookEntry]="bookEntry" 
-             (onQuantityChanged)="orderService.UpdateQuantity($event)"
-             (onRemove)="orderService.RemoveBook($event)"
-             >
+            <app-book-entry-details [bookEntry]="bookEntry" (onQuantityChanged)="orderService.UpdateQuantity($event)"
+                (onRemove)="orderService.RemoveBook($event)">
             </app-book-entry-details>
         </div>
         <div *ngIf="!orderService.order || !orderService.order.BookEntries || orderService.order.BookEntries.length <= 0"
@@ -14,13 +11,34 @@
         </div>
     </div>
     <div *ngIf="orderService.order?.BookEntries?.length" class="container col">
-        <div class="card" style="height: 100%;">
+        <div *ngIf="orderService.order" class="card" style="height: 100%;">
             <div class="card-header">
                 <h2>Price details</h2>
             </div>
             <div class="card-body">
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea  [ngModel]="orderService.order.address"
+                        (ngModelChange)="addressChanged.next($event)"
+                        class="form-control"
+                        id="address" rows="3"></textarea>
+                </div>
+                <table class="table">
+                    <tr>
+                        <td>Total Price</td>
+                        <td>{{totalMRP|currency:"INR":"symbol"}}</td>
+                    </tr>
+                    <tr>
+                        <td>Discount</td>
+                        <td class="text-success">{{discountAmount|currency:"INR":"symbol"}}</td>
+                    </tr>
+                    <tr>
+                        <td>Final Price</td>
+                        <td>{{(totalMRP - discountAmount)|currency:"INR":"symbol"}}</td>
+                    </tr>
+                </table>
             </div>
-            <button class="btn btn-success">Place Order</button>
+            <button class="btn btn-success" (click)="orderService.placeOrder(orderService.order)">Place Order</button>
         </div>
     </div>
 </main>

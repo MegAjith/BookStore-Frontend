@@ -88,6 +88,18 @@ export class OrdersService {
     )
   }
 
+  updateAddress(order: Order){
+    this.http.patch(`/api/Orders/${order.OrderId}`,{address:order.address}).subscribe(
+      (value)=>{
+        order.status = OrderStatus.PLACED;
+        this.toastService.show({
+          header: "Updated Address",
+          body: `Updated address for Order: ${order.OrderId}`
+        });
+      }
+    )
+  }
+
   placeOrder(order: Order){
     this.http.patch(`/api/Orders/${order.OrderId}`,{status:OrderStatus.PLACED}).subscribe(
       (value)=>{
@@ -96,6 +108,8 @@ export class OrdersService {
           header: "Order Placed",
           body: `Order: ${order.OrderId} placed!`
         });
+        if(this.order?.OrderId == order.OrderId)
+          this.GetOrCreateOrder();
       }
     )
   }

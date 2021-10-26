@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { interval, Subject } from 'rxjs';
-import { debounce } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { BookEntry } from '../../services/orders.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class BookEntryDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.quantityChanged.pipe(
-      debounce(() => interval(1000)),
+      debounceTime(1000),
     ).subscribe(
       (value) => {
         this.bookEntry.quantity = value;

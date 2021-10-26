@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="btn-group col-12 col-md-0">
-                <button *ngIf="options.wishList" class="btn btn-primary text-white" (click)="wishList.toggleBook(book)">
+                <button *ngIf="options.wishList" class="btn text-white"[ngClass]="{'btn-primary': !isInWishList,'btn-danger': isInWishList}" (click)="wishList.toggleBook(book)">
                     <span>{{(isInWishList)?"Remove from ":"Add to "}}</span>WishList
                 </button>
                 <button *ngIf="options.order" class="btn btn-success text-white" (click)="orderService.AddBook({Book:book,quantity:1})">
