@@ -13,6 +13,7 @@ export class BookItemComponent implements OnInit {
     Category: undefined,
     BookId: 0,
     Title: '',
+    Author:'',
     Description: 0,
     Position: 0,
     Status: true,
