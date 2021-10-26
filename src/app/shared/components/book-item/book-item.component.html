@@ -1,8 +1,8 @@
-<div class="card mb-4" style="height: 18rem;" (click)="detailsRequest.emit(book)">
+<div class="card mb-4 shadow-sm" (click)="detailsRequest.emit(book)">
   <img class="card-img-top" [src]="book.Image || '/assets/img/default-image.svg'" alt="Card image cap">
   <div class="card-body">
-    <div class="mb-3">
-      <span class="badge badge-pill bg-blue">{{book.Category?.CategoryName||"unknown"}}</span>
+    <div class="mb-2">
+      <span class="badge badge-pill bg-primary">{{book.Category?.CategoryName||"unknown"}}</span>
     </div>
     <h5 class="card-title">{{book.Title}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{book.Author||"Unknown"}}</h6>
