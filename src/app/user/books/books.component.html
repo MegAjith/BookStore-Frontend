@@ -3,4 +3,8 @@
         <app-book-list [bookList]="bookList" (detailsRequest)="bookModalData = $event"></app-book-list>
     </div>
 </main>
-<app-book-details *ngIf="bookModalData" [book]="bookModalData" (close)="bookModalData=undefined"></app-book-details>
+<div *ngIf="bookModalData" class="fullscreen bg-gray d-flex" tabindex="-1" (click)="bookModalData=undefined">
+    <div class="dialog m-auto" style="max-width: 540px;">
+        <app-book-details *ngIf="bookModalData" [book]="bookModalData"></app-book-details>
+    </div>
+</div>
