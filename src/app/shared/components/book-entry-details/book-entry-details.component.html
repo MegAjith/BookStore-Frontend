@@ -1,0 +1,19 @@
+<div class="card" (click)="$event.stopPropagation()">
+    <div class="row g-0">
+        <div class="col-md-4 d-flex">
+            <img [src]="bookEntry.Book.Image | image" alt="Card image cap"
+                class="img-fluid rounded-start m-auto" alt="...">
+        </div>
+        <div class="col-md-8 container">
+            <div class="card-body">
+                <h5 class="card-title">{{bookEntry.Book.Title}}</h5>
+                <div class="card-text">
+                    <p>{{bookEntry.Book.Description}}</p>
+                    <span><input type="number" [ngModel]="bookEntry.quantity" (ngModelChange)="quantityChanged.next($event)"/></span>
+                    <span>{{(bookEntry.Book.Price||0)|currency:"INR":"symbol"}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-danger text-white" (click)="onRemove.emit(bookEntry)">Remove</button>
+</div>

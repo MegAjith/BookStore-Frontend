@@ -1,13 +1,26 @@
-<main>
-    <div class="container">
-        <div *ngFor="let bookEntry of orderService.order?.BookEntries" class="row">
-            <app-book-details [options] = "{order: false,wishList: true}" [book]="bookEntry.Book"></app-book-details>
+<main class="row row-cols-1 row-cols-md-2">
+    <div class="container-fluid col" style="height: 50vh;overflow-y: auto;">
+        <div *ngFor="let bookEntry of orderService.order?.BookEntries" class="row mb-2">
+            <app-book-entry-details
+             [bookEntry]="bookEntry" 
+             (onQuantityChanged)="orderService.UpdateQuantity($event)"
+             (onRemove)="orderService.RemoveBook($event)"
+             >
+            </app-book-entry-details>
         </div>
-
+        <div *ngIf="!orderService.order || !orderService.order.BookEntries || orderService.order.BookEntries.length <= 0"
+            class="d-flex align-items-center" style="width: 100%;height: 100%;">
+            <span class="m-auto">Nothing in cart yet!</span>
+        </div>
     </div>
-    <div *ngIf="!orderService.order || !orderService.order.BookEntries || orderService.order.BookEntries.length <= 0" 
-        class="d-flex align-items-center" style="width: 100vw;height: 50vh;"
-        >
-        <span class="m-auto">Nothing in cart yet!</span>
+    <div *ngIf="orderService.order?.BookEntries?.length" class="container col">
+        <div class="card" style="height: 100%;">
+            <div class="card-header">
+                <h2>Price details</h2>
+            </div>
+            <div class="card-body">
+            </div>
+            <button class="btn btn-success">Place Order</button>
+        </div>
     </div>
 </main>

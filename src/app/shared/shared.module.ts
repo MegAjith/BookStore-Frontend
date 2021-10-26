@@ -7,6 +7,8 @@ import { BookItemComponent } from './components/book-item/book-item.component';
 import { RouterModule } from '@angular/router';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { ImagePipe } from './pipes/image.pipe';
+import { BookEntryDetailsComponent } from './components/book-entry-details/book-entry-details.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,18 +19,21 @@ import { ImagePipe } from './pipes/image.pipe';
     BookListComponent,
     BookItemComponent,
     BookDetailsComponent,
-    ImagePipe
+    ImagePipe,
+    BookEntryDetailsComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
   ],
   exports: [
     CategoryListComponent,
     CategoryItemComponent,
     BookListComponent,
     BookItemComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    BookEntryDetailsComponent
   ],
 })
 export class SharedModule { }

@@ -5,6 +5,9 @@
       <span class="badge badge-pill bg-primary">{{book.Category?.CategoryName||"unknown"}}</span>
     </div>
     <h5 class="card-title">{{book.Title}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{book.Author||"Unknown"}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">By: {{book.Author||"Unknown"}}</h6>
+    <p class="card-text">
+      <span>{{(book.Price||0)|currency:"INR":"symbol"}}</span>
+    </p>
   </div>
 </div>

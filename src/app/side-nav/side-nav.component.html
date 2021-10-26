@@ -31,7 +31,7 @@
             <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase(),'WishList']" routerLinkActive="active">Wishlist</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase(),'Orders']" routerLinkActive="active" tabindex="-1" aria-disabled="true">Orders</a>
+            <a class="nav-link" [routerLink]="[auth.user.role?.toLowerCase(),'Cart']" routerLinkActive="active">Cart</a>
           </li>
         </ul>
         <form class="btn-group col col-lg-3" (ngSubmit)="onSearch()">
