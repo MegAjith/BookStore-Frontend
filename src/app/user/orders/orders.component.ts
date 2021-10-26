@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdersService } from 'src/app/shared/services/orders.service';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import { BookEntry, OrdersService } from 'src/app/shared/services/orders.service';
 
 @Component({
   selector: 'app-orders',
@@ -8,7 +10,39 @@ import { OrdersService } from 'src/app/shared/services/orders.service';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor(public orderService: OrdersService) { }
+  addressChanged = new Subject<string>();
+
+  constructor(public orderService: OrdersService) {
+    this.addressChanged.pipe(
+      debounceTime(1000),
+    ).subscribe(
+      (value)=>{
+        if(orderService.order){
+          orderService.order.address = value;
+          orderService.updateAddress(orderService.order);
+        }
+        
+      }
+    )
+   }
+
+  get totalMRP(){
+    let price = 0.0;
+    if(!this.orderService.order)
+      return 0.00;
+    for(let bookEntry of this.orderService.order?.BookEntries)
+    {
+      price += (bookEntry.quantity||0) * (bookEntry.Book.Price||0)
+    }
+    return price;
+  }
+
+  get discountAmount(){
+    let price = this.totalMRP;
+    if(this.orderService.order)
+      return price * 0.1;
+    return 0;
+  }
 
   ngOnInit(): void {
   }

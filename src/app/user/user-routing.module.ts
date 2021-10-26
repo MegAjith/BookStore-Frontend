@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'Category', component: CategoriesComponent },
   { path:'Books', component: BooksComponent},
   { path:'WishList', component: WishlistComponent},
-  { path:'Orders', component: OrdersComponent},
+  { path:'Cart', component: OrdersComponent},
 ];
 
 @NgModule({

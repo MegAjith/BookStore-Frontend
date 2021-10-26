@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { BooksComponent } from './books/books.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { OrdersComponent } from './orders/orders.component';
     CommonModule,
     UserRoutingModule,
     SharedModule,
+    FormsModule,
   ]
 })
 export class UserModule { }

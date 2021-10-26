@@ -45,7 +45,7 @@ export class OrdersService {
   }
 
   AddBook(bookEntry: BookEntry){
-    this.http.post<BookEntry>("/api/BookEntries",{
+    this.http.post<BookEntry>("/api/Cart",{
       BookId: bookEntry.Book.BookId,
       OrderId: this.order?.OrderId,
     }).subscribe(
@@ -60,26 +60,41 @@ export class OrdersService {
   }
 
   RemoveBook(bookEntry: BookEntry){
-    this.http.delete<BookEntry>(`/api/BookEntries/${this.order?.OrderId}/${bookEntry.Book.BookId}/}`).subscribe(
+    this.http.delete<BookEntry>(`/api/Cart/${this.order?.OrderId}/${bookEntry.Book.BookId}`).subscribe(
       (value) => {
-          this.order?.BookEntries.push(bookEntry);
+        if(this.order){
+          this.order.BookEntries = this.order?.BookEntries.filter(x => x.Book.BookId != bookEntry.Book.BookId);
           this.toastService.show({
             header: "Removed from Cart",
             body: `removed '${bookEntry.Book.Title}' from cart`
           });
         }
+      }
     )
   }
 
   UpdateQuantity(bookEntry:  BookEntry){
-    this.http.put<BookEntry>(`/api/BookEntries/${this.order?.OrderId}/${bookEntry.Book.BookId}/}`,{
-      quantity:bookEntry.quantity
+    this.http.put<BookEntry>(`/api/Cart/${this.order?.OrderId}/${bookEntry.Book.BookId}`,{
+      OrderId: this.order?.OrderId,
+      BookId: bookEntry.Book.BookId,
+      quantity:bookEntry.quantity,
     }).subscribe(
       (value) => {
-        bookEntry.quantity = value.quantity;
         this.toastService.show({
           header: "Updated Cart",
           body: `Updated '${bookEntry.Book.Title}' to quantity: ${bookEntry.quantity}`
+        });
+      }
+    )
+  }
+
+  updateAddress(order: Order){
+    this.http.patch(`/api/Orders/${order.OrderId}`,{address:order.address}).subscribe(
+      (value)=>{
+        order.status = OrderStatus.PLACED;
+        this.toastService.show({
+          header: "Updated Address",
+          body: `Updated address for Order: ${order.OrderId}`
         });
       }
     )
@@ -93,6 +108,8 @@ export class OrdersService {
           header: "Order Placed",
           body: `Order: ${order.OrderId} placed!`
         });
+        if(this.order?.OrderId == order.OrderId)
+          this.GetOrCreateOrder();
       }
     )
   }
