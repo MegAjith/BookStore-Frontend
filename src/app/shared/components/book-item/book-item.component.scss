@@ -6,3 +6,7 @@
 .card:hover {
     box-shadow: 0 .5rem 1rem rgba($black, .15)!important;
 }
+
+.badge.badge-pill {
+    letter-spacing: 1px;
+}
