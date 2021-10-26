@@ -9,11 +9,10 @@
 -->
 <main class="container row align-items-center m-auto">
     <div class="container row-cols-2 g-2">
-        <button type="submit" class="btn btn-primary col" (click)="isLogin = true">Login</button>
-        <button type="submit" class="btn btn-primary col" (click)="isLogin = false">Register</button>
+        <button type="submit" class="btn btn-primary col" [ngClass]="{'active': isLogin}" (click)="isLogin = true">Login</button>
+        <button type="submit" class="btn btn-primary col" [ngClass]="{'active': !isLogin}" (click)="isLogin = false">Register</button>
     </div>
     <div *ngIf="isLogin; else elseblock">
-        <h2 style="color:royalblue; text-align: center;">Log In</h2>
         <form (ngSubmit)="onLogin()">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -33,7 +32,6 @@
 
 
     <ng-template #elseblock>
-        <h2 style="color:royalblue; text-align: center;">Sign Up</h2>
         <form (ngSubmit)="onRegister()">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>

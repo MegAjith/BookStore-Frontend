@@ -6,6 +6,7 @@ import { BookListComponent } from './components/book-list/book-list.component';
 import { BookItemComponent } from './components/book-item/book-item.component';
 import { RouterModule } from '@angular/router';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { ImagePipe } from './pipes/image.pipe';
 
 
 
@@ -15,7 +16,8 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
     CategoryItemComponent,
     BookListComponent,
     BookItemComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    ImagePipe
   ],
   imports: [
     CommonModule,
