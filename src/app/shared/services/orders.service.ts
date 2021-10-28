@@ -113,6 +113,9 @@ export class OrdersService {
       }
     )
   }
+  ListOrder():any{
+    return this.http.get<Order[]>(`/api/Orders/`)
+  }
 
   cancelOrder(order: Order){
     this.http.patch(`/api/Orders/${order.OrderId}`,{status:OrderStatus.CANCELLED}).subscribe(
