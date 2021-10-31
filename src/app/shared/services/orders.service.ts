@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from './book.service';
 import { ToastService } from './toast.service';
 
@@ -27,10 +28,13 @@ export interface Order {
   providedIn: 'root'
 })
 export class OrdersService {
+  static order(order: any) {
+    throw new Error('Method not implemented.');
+  }
 
   order?: Order = undefined;
 
-  constructor(private http: HttpClient,private toastService: ToastService) {
+  constructor(private http: HttpClient,private toastService: ToastService,private router:Router) {
     this.GetOrCreateOrder();
    }
 

@@ -11,15 +11,14 @@ import { FormsModule } from '@angular/forms';
 import { NgbToastModule,NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from './shared/shared.module';
 import { ToastComponent } from './toast/toast.component';
-import { OrderListComponent } from './users/order-list/order-list.component';
+import { OrderListComponent } from './user/order-list/order-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideNavComponent,
     AuthComponent,
-    ToastComponent,
-    OrderListComponent
+    ToastComponent
   ],
   imports: [
     BrowserModule,

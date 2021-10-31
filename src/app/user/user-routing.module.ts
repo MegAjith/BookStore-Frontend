@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrderListComponent } from '../users/order-list/order-list.component';
+import { OrderListComponent } from './order-list/order-list.component';
 import { BooksComponent } from './books/books.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { OrdersComponent } from './orders/orders.component';
 import { UserComponent } from './user.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+
 
 const routes: Routes = [
   { path: '', component: UserComponent },

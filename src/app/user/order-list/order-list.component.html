@@ -1,0 +1,26 @@
+<div class="mt-50 mb-50">
+    
+    <div class="gap">
+        <div class="col-2 d-flex mx-auto"> </div>
+    </div>
+    <div class="title mx-auto"> Thank you for your order! </div>
+    <div id="sub-title">
+        <p><b>Your account summary </b></p>
+    </div>
+    <div class="main" *ngFor="let order of orderData"> 
+        
+        <div *ngFor="let bookEntry of order.BookEntries" class="row mb-2">
+            <app-book-entry-details [bookEntry]="bookEntry">
+            </app-book-entry-details>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-4"> <b> Total:</b> </div>
+                <div class="col-4"> <b>{{order.price}}</b> </div>
+
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary d-flex mx-auto" (click)=goToBookStore()> Go to Book Store </button>
+</div>

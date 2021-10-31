@@ -9,6 +9,8 @@ import { BooksComponent } from './books/books.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { OrdersComponent } from './orders/orders.component';
 import { FormsModule } from '@angular/forms';
+import { OrderListComponent } from './order-list/order-list.component';
+
 
 
 @NgModule({
@@ -17,13 +19,15 @@ import { FormsModule } from '@angular/forms';
     CategoriesComponent,
     BooksComponent,
     WishlistComponent,
-    OrdersComponent
+    OrdersComponent,
+    OrderListComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     SharedModule,
     FormsModule,
+    
   ]
 })
 export class UserModule { }
